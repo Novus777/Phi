@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import "./globals.css";
+import type { Metadata } from "next";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import type { ReactNode } from "react";
@@ -18,9 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-black text-white">
         <Navbar />
-        <main className="pt-24">
-          {children}
-        </main>
+        {children}
         <Footer />
       </body>
     </html>
