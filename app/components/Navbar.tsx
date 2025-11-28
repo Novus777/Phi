@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState } from "reactj";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
