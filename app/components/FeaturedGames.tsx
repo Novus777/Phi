@@ -4,6 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 
 const games = [
+  { name: "VS", slug: "vs", img: "/games/coinflip.png", tag: "Duel", color: "from-emerald-500 to-cyan-500" },
+  { name: "Flappy Phoenix", slug: "flappy-phoenix", img: "/games/slots.png", tag: "New", color: "from-purple-500 to-pink-500" },
   { name: "Plinko", slug: "plinko", img: "/games/plinko.png", tag: "Hot", color: "from-emerald-500 to-cyan-500" },
   { name: "Crash", slug: "crash", img: "/games/crash.png", tag: "New", color: "from-purple-500 to-pink-500" },
   { name: "Mines", slug: "mines", img: "/games/mines.png", tag: "Classic", color: "from-yellow-400 to-orange-500" },
@@ -20,7 +22,7 @@ export default function FeaturedGames() {
           Featured Games
         </h2>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
           {games.map((game) => (
             <Link
               key={game.slug}
