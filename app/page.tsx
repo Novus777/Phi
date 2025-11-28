@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import FeaturedGames from "./components/FeaturedGames";
 
 export default function Home() {
   return (
@@ -134,6 +135,9 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* FEATURED GAMES SECTION */}
+      <FeaturedGames />
 
       {/* HOW IT WORKS SECTION */}
       <section
