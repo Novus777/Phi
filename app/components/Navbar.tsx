@@ -1,54 +1,54 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
+import Link from "next/link";
+import { useToast } from "./ToastProvider";
+import ProfileMenu from "./ProfileMenu";
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
+  const { showToast } = useToast();
+  const [connected, setConnected] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const fakeConnect = () => {
+    showToast("Wallet connection coming soon.");
+    setConnected(true);
+  };
+
+  const fakeLogout = () => {
+    setConnected(false);
+    setMenuOpen(false);
+    showToast("Disconnected.");
+  };
 
   return (
-    <nav className="w-full px-6 py-4 flex justify-between items-center bg-black/30 backdrop-blur-xl border-b border-white/10 fixed top-0 left-0 z-50">
-      
-      {/* Logo */}
-      <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
-        <Image src="/phi-logo.png" width={40} height={40} alt="PHI" />
-        <span className="text-xl font-semibold">PHI</span>
-      </Link>
+    <nav className="w-full border-b border-white/10 bg-black/40 backdrop-blur-xl py-4 px-6 flex justify-between items-center">
+      <Link href="/" className="text-white text-xl font-semibold">PHI</Link>
 
-      {/* Desktop Menu */}
-      <div className="hidden md:flex gap-8 text-gray-300">
-        <Link href="/" className="hover:text-white transition">Home</Link>
-        <Link href="/games" className="hover:text-white transition">Games</Link>
-        <Link href="/wallet" className="hover:text-white transition">Wallet</Link>
-        <Link href="/vip" className="hover:text-white transition">VIP</Link>
-        <Link href="/profile" className="hover:text-white transition">Profile</Link>
+      <div className="relative">
+
+        {!connected ? (
+          <button
+            onClick={fakeConnect}
+            className="rounded-xl bg-emerald-500 px-4 py-2 text-sm font-semibold text-black hover:bg-emerald-400 transition"
+          >
+            Connect Wallet
+          </button>
+        ) : (
+          <div>
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="rounded-xl border border-white/10 bg-white/10 px-4 py-2 text-sm text-gray-200 hover:border-emerald-400 hover:text-emerald-300 transition"
+            >
+              1.000 TEST ▾
+            </button>
+
+            {menuOpen && (
+              <ProfileMenu onLogout={fakeLogout} />
+            )}
+          </div>
+        )}
       </div>
-
-      {/* Mobile Menu Button */}
-      <button
-        type="button"
-        onClick={() => setOpen((s) => !s)}
-        className="md:hidden"
-        aria-expanded={open}
-        aria-label={open ? "Close menu" : "Open menu"}
-      >
-        <span className="block w-6 h-1 bg-white mb-1" />
-        <span className="block w-6 h-1 bg-white mb-1" />
-        <span className="block w-6 h-1 bg-white" />
-      </button>
-
-      {/* Mobile Menu Dropdown */}
-      {open && (
-        <div className="absolute top-16 right-6 bg-black/90 border border-white/10 rounded-xl p-6 flex flex-col gap-4 md:hidden z-40">
-          <Link href="/" className="hover:text-white" onClick={() => setOpen(false)}>Home</Link>
-          <Link href="/games" className="hover:text-white" onClick={() => setOpen(false)}>Games</Link>
-          <Link href="/wallet" className="hover:text-white" onClick={() => setOpen(false)}>Wallet</Link>
-          <Link href="/vip" className="hover:text-white" onClick={() => setOpen(false)}>VIP</Link>
-          <Link href="/profile" className="hover:text-white" onClick={() => setOpen(false)}>Profile</Link>
-        </div>
-      )}
-
     </nav>
   );
 }

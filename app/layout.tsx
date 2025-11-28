@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ToastProvider from "./components/ToastProvider";
 import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
@@ -16,10 +17,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head />
       <body className="bg-black text-white">
-        <Navbar />
-        {children}
-        <Footer />
+        <ToastProvider>
+          <Navbar />
+          <main className="pt-24">
+            {children}
+          </main>
+          <Footer />
+        </ToastProvider>
       </body>
     </html>
   );
