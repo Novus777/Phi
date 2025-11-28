@@ -1,58 +1,37 @@
 export default function Home() {
   return (
-    <main className="min-h-screen w-full bg-black text-white px-6 pb-20">
-      
-      {/* HERO SECTION */}
-      <section className="w-full flex flex-col items-center pt-20">
-        
-        {/* Center PHI Logo */}
-        {/* logo removed */}
+    <main className="min-h-screen w-full bg-gradient-to-b from-black via-gray-900 to-[#050018] text-white flex items-center justify-center px-6">
+      <section className="w-full max-w-3xl text-center">
+        <div className="mx-auto mb-8 inline-block rounded-2xl bg-white/3 px-4 py-2 text-sm font-medium text-white/90">
+          New — Crypto Casino Launch
+        </div>
 
-        <h1 className="text-4xl font-semibold tracking-wide text-center">
-          Welcome to <span className="text-purple-400">PHI</span>
+        <h1 className="text-6xl sm:text-7xl md:text-8xl font-extrabold tracking-tight leading-[0.9] mb-6">
+          PHI <span className="text-purple-400">CASINO</span>
         </h1>
 
-        <p className="mt-3 text-gray-400 text-lg text-center max-w-xl">
-          The world’s first blended human & AI-powered crypto casino.
+        <p className="mx-auto max-w-2xl text-lg text-gray-300 mb-10">
+          Play with confidence — fast, fair, and powered by cutting-edge AI. Join a blended human & crypto experience built for legendary wins.
         </p>
 
-        <div className="flex gap-4 mt-8">
-          <button className="px-6 py-3 bg-purple-600 hover:bg-purple-700 transition rounded-xl font-semibold">
-            Play Now
-          </button>
+        <div className="flex justify-center">
+          <a
+            href="#"
+            className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-purple-600 via-violet-600 to-pink-500 px-8 py-4 text-lg font-semibold shadow-lg hover:scale-[1.02] transform transition"
+          >
+            Enter Casino
+            <span className="inline-block w-3 h-3 rounded-full bg-white/20" />
+          </a>
+        </div>
 
-          <button className="px-6 py-3 bg-white/10 hover:bg-white/20 transition rounded-xl font-semibold">
-            Explore Games
-          </button>
+        <div className="mt-12 flex justify-center gap-6 text-sm text-gray-400">
+          <span>Fast deposits</span>
+          <span className="text-white/20">•</span>
+          <span>Provably fair</span>
+          <span className="text-white/20">•</span>
+          <span>24/7 Support</span>
         </div>
       </section>
-
-      <div className="w-full h-px bg-white/10 my-14"></div>
-
-      <section>
-        <h2 className="text-2xl font-semibold mb-6">Featured Games</h2>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-
-          {[
-            { name: "PHI Plinko" },
-            { name: "Mines" },
-            { name: "Crash" },
-            { name: "Phoenix" },
-          ].map((game) => (
-            <div
-              key={game.name}
-              className="bg-white/5 hover:bg-white/10 transition rounded-2xl p-4 flex flex-col items-center"
-            >
-              <div className="w-full h-28 rounded-xl overflow-hidden mb-3 bg-white/3" />
-              
-              <p className="font-semibold">{game.name}</p>
-            </div>
-          ))}
-
-        </div>
-      </section>
-
     </main>
   );
 }
