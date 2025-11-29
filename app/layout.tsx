@@ -5,11 +5,7 @@ import SolanaWalletProvider from "./providers/WalletProvider";
 import ToastProvider from "./components/ToastProvider";
 import Navbar from "./components/Navbar";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className="bg-black text-white">
@@ -23,4 +19,3 @@ export default function RootLayout({
     </html>
   );
 }
-

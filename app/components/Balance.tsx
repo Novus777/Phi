@@ -19,7 +19,7 @@ export default function Balance() {
 
     const interval = setInterval(fetchBalance, 5000);
     return () => clearInterval(interval);
-  }, [publicKey]);
+  }, [publicKey, connection]);
 
   if (!publicKey) return null;
 

@@ -1,10 +1,9 @@
 "use client";
 
-import { useWallet } from "@solana/wallet-adapter-react";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useWallet } from "@solana/wallet-adapter-react";
 import { useToast } from "./ToastProvider";
-
 import Balance from "./Balance";
 
 export default function Navbar() {
