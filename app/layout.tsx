@@ -1,9 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import SolanaWalletProvider from "./providers/WalletProvider";
 import ToastProvider from "./components/ToastProvider";
-import type { ReactNode } from "react";
+import Navbar from "./components/Navbar";
 
 export const metadata: Metadata = {
   title: "PHI Casino",
@@ -13,19 +12,17 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: ReactNode;
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-      <head />
       <body className="bg-black text-white">
-        <ToastProvider>
-          <Navbar />
-          <main className="pt-24">
+        <SolanaWalletProvider>
+          <ToastProvider>
+            <Navbar />
             {children}
-          </main>
-          <Footer />
-        </ToastProvider>
+          </ToastProvider>
+        </SolanaWalletProvider>
       </body>
     </html>
   );
