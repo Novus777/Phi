@@ -1,17 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 
 const games = [
-  { name: "VS", slug: "vs", img: "/games/coinflip.png", tag: "Duel", color: "from-emerald-500 to-cyan-500" },
-  { name: "Flappy Phoenix", slug: "flappy-phoenix", img: "/games/slots.png", tag: "New", color: "from-purple-500 to-pink-500" },
-  { name: "Plinko", slug: "plinko", img: "/games/plinko.png", tag: "Hot", color: "from-emerald-500 to-cyan-500" },
-  { name: "Crash", slug: "crash", img: "/games/crash.png", tag: "New", color: "from-purple-500 to-pink-500" },
-  { name: "Mines", slug: "mines", img: "/games/mines.png", tag: "Classic", color: "from-yellow-400 to-orange-500" },
-  { name: "Slots", slug: "slots", img: "/games/slots.png", tag: "Jackpot", color: "from-red-500 to-rose-500" },
-  { name: "Dice", slug: "dice", img: "/games/dice.png", tag: "Stable", color: "from-blue-500 to-indigo-500" },
-  { name: "Coinflip", slug: "coinflip", img: "/games/coinflip.png", tag: "50/50", color: "from-gray-400 to-gray-600" }
+  { name: "VS", slug: "vs", tag: "New", color: "from-red-500 to-orange-500", icon: "VS" },
+  { name: "Flappy Phoenix", slug: "flappy-phoenix", tag: "Hot", color: "from-yellow-400 to-red-500", icon: "🔥" },
+  { name: "Plinko", slug: "plinko", tag: "Hot", color: "from-emerald-500 to-cyan-500", icon: "●" },
+  { name: "Crash", slug: "crash", tag: "Volatile", color: "from-purple-500 to-pink-500", icon: "📉" },
+  { name: "Mines", slug: "mines", tag: "Classic", color: "from-yellow-400 to-orange-500", icon: "💣" },
+  { name: "Slots", slug: "slots", tag: "Jackpot", color: "from-red-500 to-rose-500", icon: "🎰" },
+  { name: "Dice", slug: "dice", tag: "Stable", color: "from-blue-500 to-indigo-500", icon: "🎲" },
+  { name: "Coinflip", slug: "coinflip", tag: "50/50", color: "from-gray-400 to-gray-600", icon: "🪙" }
 ];
 
 export default function FeaturedGames() {
@@ -34,13 +33,8 @@ export default function FeaturedGames() {
               />
 
               <div className="p-6 flex flex-col items-center justify-center">
-                <div className="w-20 h-20 relative mb-4">
-                  <Image
-                    src={game.img}
-                    alt={game.name}
-                    fill
-                    className="object-contain"
-                  />
+                <div className="w-16 h-16 mb-4 rounded-full bg-white/5 flex items-center justify-center text-2xl">
+                  {game.icon}
                 </div>
 
                 <h3 className="text-white font-medium text-lg">
