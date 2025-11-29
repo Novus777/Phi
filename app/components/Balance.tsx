@@ -6,26 +6,33 @@ import { useEffect, useState } from "react";
 export default function Balance() {
   const { connection } = useConnection();
   const { publicKey } = useWallet();
-  const [balance, setBalance] = useState(0);
+  const [balance, setBalance] = useState<number | null>(null);
 
   useEffect(() => {
+    let mounted = true;
+
     const fetchBalance = async () => {
-      if (publicKey) {
-        const lamports = await connection.getBalance(publicKey);
-        setBalance(lamports / 1_000_000_000);
+      try {
+        if (publicKey && connection) {
+          const lamports = await connection.getBalance(publicKey);
+          if (mounted) setBalance(lamports / 1_000_000_000);
+        } else {
+          if (mounted) setBalance(null);
+        }
+      } catch (err) {
+        if (mounted) setBalance(null);
       }
     };
-    fetchBalance();
 
+    fetchBalance();
     const interval = setInterval(fetchBalance, 5000);
-    return () => clearInterval(interval);
+    return () => {
+      mounted = false;
+      clearInterval(interval);
+    };
   }, [publicKey, connection]);
 
-  if (!publicKey) return null;
+  if (!publicKey || balance === null) return null;
 
-  return (
-    <div className="text-sm text-emerald-300 ml-3">
-      {balance.toFixed(3)} SOL
-    </div>
-  );
+  return <div className="text-sm text-emerald-300 ml-3">{balance.toFixed(3)} SOL</div>;
 }

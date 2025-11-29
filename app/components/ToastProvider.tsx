@@ -2,10 +2,12 @@
 
 import { createContext, useContext, useState } from "react";
 
-const ToastContext = createContext<any>(null);
+const ToastContext = createContext<{ showToast: (msg: string) => void } | null>(null);
 
 export function useToast() {
-  return useContext(ToastContext);
+  const ctx = useContext(ToastContext);
+  if (!ctx) throw new Error("useToast must be used within ToastProvider");
+  return ctx;
 }
 
 export default function ToastProvider({ children }: { children: React.ReactNode }) {
@@ -28,7 +30,7 @@ export default function ToastProvider({ children }: { children: React.ReactNode 
 
       <style jsx>{`
         .animate-fadeIn {
-          animation: fadein 0.3s ease-out;
+          animation: fadein 0.28s ease-out;
         }
         @keyframes fadein {
           from { opacity: 0; transform: translate(-50%, 10px); }
